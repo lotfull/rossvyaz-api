@@ -58,7 +58,7 @@ ROOT_URLCONF = 'atrucks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['rossvyaz/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

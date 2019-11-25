@@ -1,3 +1,6 @@
 requests
 django
 djangorestframework
+tables
+timeloop
+phonenumbers
