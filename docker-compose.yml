@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  app:
+    build: .
+    volumes:
+      - /tmp/atrucks_data:/data/
+    ports:
+      - 8001:8001
+    environment:
+      PYTHONUNBUFFERED: 1

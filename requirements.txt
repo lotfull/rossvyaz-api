@@ -4,3 +4,4 @@ djangorestframework
 tables
 timeloop
 phonenumbers
+pandas
