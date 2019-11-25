@@ -15,6 +15,16 @@ csv_urls = [
 ]
 
 
+class NumberNotFound(Exception):
+    def __init__(self, num):
+        super().__init__(f'Телефон "{num}" не найден в базе данных Россвязи')
+
+
+class NumberNotRecognized(Exception):
+    def __init__(self, num):
+        super().__init__(f'Телефон "{num}" не может быть распознан')
+
+
 def csv_url_to_df(url):
     return pandas.read_csv(url,
                            delimiter=';',
@@ -32,7 +42,7 @@ def update_nums_df():
 
     df.to_hdf('data.h5', key='df', mode='w')
 
-    global nums_df, lower_bounds
+    global numsu_df, lower_bounds
     nums_df, lower_bounds = df, df['begin']
 
     print('Information updated:', datetime.datetime.now())
@@ -61,23 +71,28 @@ def parse_num(num):
     try:
         return phonenumbers.parse(num, 'RU')
     except phonenumbers.NumberParseException as e:
-        return None
+        raise NumberNotRecognized(num)
 
 
 def get_num_info(num):
     num = parse_num(num)
-    if num is None:
-        return None
-
     num_str = str(num.national_number)
+    if len(num_str) != 10:
+        raise NumberNotFound(num_str)
     lower_bound_i = bisect_left(get_lower_bounds(), num_str)
+    if lower_bound_i == 0 or lower_bound_i == len(get_lower_bounds()):
+        raise NumberNotFound(num_str)
+
     num_info = get_nums_df().iloc[lower_bound_i]
-    if lower_bound_i and num_str < num_info['end']:
-        response = {
-            'Телефон': phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.NATIONAL),
-            'Оператор': num_info['operator'],
-            'Регион': num_info['region'],
-        }
-        return response
-    else:
-        return None
+    if num_str > num_info['end']:
+        raise NumberNotFound(num_str)
+
+    response = {
+        'Телефон': '7' + num_str,
+        # 'Телефон': phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.NATIONAL),
+        'Оператор': num_info['operator'],
+        'Регион': num_info['region'],
+        # 'from': num_info['begin'],
+        # 'to': num_info['end'],
+    }
+    return response
