@@ -8,11 +8,11 @@ from rossvyaz.info import get_num_info
 def search(request):
     context = dict()
     params = request.POST or request.GET
-    num = params.get('num')
-    try:
-        context = get_num_info(num)
-    except Exception as e:
-        context['error_message'] = str(e)
+    if 'num' in params:
+        try:
+            context = get_num_info(params.get('num'))
+        except Exception as e:
+            context['error_message'] = str(e)
 
     return context
 
@@ -23,4 +23,5 @@ class SearchAPI(views.APIView):
 
 
 def search_view(request):
+    print('request')
     return render(request, 'rossvyaz/search.html', search(request))

@@ -1,7 +1,7 @@
 <form action="{% url 'rossvyaz:search' %}" method="post">
 {% csrf_token %}
 <label for="num">Номер телефона:</label>
-<input type="text" name="num" id="num" value="{{ request.POST.num }}" placeholder="9856660205">
+<input type="text" name="num" id="num" value="{% if request.POST %}{{ request.POST.num }}{% endif %}" placeholder="9856660205">
 <input type="submit" value="Найти">
 </form>
 
