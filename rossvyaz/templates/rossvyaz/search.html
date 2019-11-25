@@ -1,16 +1,16 @@
 <form action="{% url 'rossvyaz:search' %}" method="post">
 {% csrf_token %}
 <label for="num">Номер телефона:</label>
-<input type="text" name="num" id="num" value="" placeholder="9856660205">
+<input type="text" name="num" id="num" value="{{ request.POST.num }}" placeholder="9856660205">
 <input type="submit" value="Найти">
 </form>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}<p><strong>Ошибка: {{ error_message }}</strong></p>{% endif %}
 
-{% if result %}
+{% if number and operator and region %}
 <ul>
-    {% for key, value in result.items %}
-    <li>{{ key }}: {{ value }}</li>
-    {% endfor %}
+    <li>{{ number }}</li>
+    <li>{{ operator }}</li>
+    <li>{{ region }}</li>
 </ul>
 {% endif %}

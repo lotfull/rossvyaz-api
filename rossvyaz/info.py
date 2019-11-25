@@ -88,10 +88,10 @@ def get_num_info(num):
         raise NumberNotFound(num_str)
 
     response = {
-        'Телефон': '7' + num_str,
+        'number': '7' + num_str,
         # 'Телефон': phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.NATIONAL),
-        'Оператор': num_info['operator'],
-        'Регион': num_info['region'],
+        'operator': num_info['operator'],
+        'region': num_info['region'],
         # 'from': num_info['begin'],
         # 'to': num_info['end'],
     }

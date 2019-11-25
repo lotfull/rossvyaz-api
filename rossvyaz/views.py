@@ -8,8 +8,9 @@ from rossvyaz.info import get_num_info
 def search(request):
     context = dict()
     params = request.POST or request.GET
+    num = params.get('num')
     try:
-        context['result'] = get_num_info(params.get('num'))
+        context = get_num_info(num)
     except Exception as e:
         context['error_message'] = str(e)
 
