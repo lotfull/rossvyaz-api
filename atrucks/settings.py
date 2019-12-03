@@ -47,6 +47,12 @@ INSTALLED_APPS = [
     'constance.backends.database',
 ]
 
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'rossvyaz_update_date': ('', 'Help'),
+    'rossvyaz_records': ('', 'Help'),
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
