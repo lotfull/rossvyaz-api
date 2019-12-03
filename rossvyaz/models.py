@@ -17,3 +17,7 @@ class Phone(models.Model):
 
     def __str__(self):
         return f'{self.begin}-{self.end}'
+
+    @staticmethod
+    def find(num):
+        return Phone.objects.filter(begin__lte=num, end__gte=num).select_related().first()

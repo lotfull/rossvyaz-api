@@ -79,19 +79,17 @@ def get_num_info(num):
     num_str = str(num.national_number)
     if len(num_str) != 10:
         raise NumberNotFound(num_str)
-    lower_bound_i = bisect_left(get_lower_bounds(), num_str)
-    if lower_bound_i == 0 or lower_bound_i == len(get_lower_bounds()):
-        raise NumberNotFound(num_str)
 
-    num_info = get_nums_df().iloc[lower_bound_i]
-    if num_str > num_info['end']:
+    num_info = Phone.find(num_str)
+
+    if num_info is None:
         raise NumberNotFound(num_str)
 
     response = {
         'number': '7' + num_str,
         # 'Телефон': phonenumbers.format_number(num, phonenumbers.PhoneNumberFormat.NATIONAL),
-        'operator': num_info['operator'],
-        'region': num_info['region'],
+        'operator': num_info.operator.name,
+        'region': num_info.region.name,
         # 'from': num_info['begin'],
         # 'to': num_info['end'],
     }
