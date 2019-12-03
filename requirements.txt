@@ -5,4 +5,5 @@ tables
 timeloop
 phonenumbers
 pandas
+psycopg2
 python-dotenv
