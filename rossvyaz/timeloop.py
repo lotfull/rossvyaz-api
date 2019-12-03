@@ -8,4 +8,4 @@ tl = Timeloop()
 @tl.job(interval=timedelta(days=1))
 def update_job():
     from . import info
-    info.update_nums_df()
+    info.update_info(True)
