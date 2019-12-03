@@ -5,5 +5,5 @@ class RossvyazConfig(AppConfig):
     name = 'rossvyaz'
 
     def ready(self):
-        from . import info, timeloop
-        info.update_info(True)
+        from rossvyaz.core import info
+        info.update_info()

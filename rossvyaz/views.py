@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import views
 from rest_framework.response import Response
 
-from rossvyaz.info import get_num_info
+from rossvyaz.core.info import get_num_info
 
 
 def search(request):
@@ -23,5 +23,4 @@ class SearchAPI(views.APIView):
 
 
 def search_view(request):
-    print('request')
     return render(request, 'rossvyaz/search.html', search(request))

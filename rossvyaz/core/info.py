@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 from constance import config
 
-from .models import Region, Operator, Phone
+from rossvyaz.models import Region, Operator, Phone
 
 rossvyaz_url = 'https://rossvyaz.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii'
 csv_urls = [
