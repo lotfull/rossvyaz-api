@@ -107,6 +107,7 @@ def update_df_and_model(df, Model, column):
 
 
 def update_info(force=False):
+    print('Updating information from rossvyaz.ru.')
     try_num = 0
 
     update_date, records, data_is_updated = get_rossvyaz_data_info()

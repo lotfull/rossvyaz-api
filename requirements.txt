@@ -8,6 +8,6 @@ pandas
 psycopg2
 python-dotenv
 git+https://github.com/Lotfull/django-postgres-copy.git
-csv
 django-constance
 django-picklefield
+beautifulsoup4

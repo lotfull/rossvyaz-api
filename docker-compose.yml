@@ -3,11 +3,14 @@ version: '3.4'
 services:
   db:
     image: postgres
-    volumes:
-    - postgres_data:/var/lib/postgresql/data/
   app:
     build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/project
     ports:
-      - 8001:8001
+      - "8000:8000"
+    depends_on:
+      - db
     environment:
       PYTHONUNBUFFERED: 1
