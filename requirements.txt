@@ -1,7 +1,6 @@
 requests
 django
 djangorestframework
-tables
 timeloop
 phonenumbers
 pandas
@@ -11,3 +10,4 @@ git+https://github.com/Lotfull/django-postgres-copy.git
 django-constance
 django-picklefield
 beautifulsoup4
+wheel

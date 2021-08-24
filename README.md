@@ -42,8 +42,8 @@ API метод для получения информации о номере:
 Номер проверяется на наличие в базе Россвязи (этот орган
 отвечает за выдачу телефонных номеров разным операторам в России): 
 
-https://rossvyaz.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii
-https://rossvyaz.ru/about/otkrytoe-pravitelstvo/otkrytye-dannee/reestr-otkrytykh-dannykh
+https://rossvyaz.gov.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii
+https://rossvyaz.gov.ru/about/otkrytoe-pravitelstvo/otkrytye-dannee/reestr-otkrytykh-dannykh
 
 Раз в сутки происходит получение данных из базы Россвязи, их хранение и обновление. 
 

@@ -10,12 +10,12 @@ from constance import config
 
 from rossvyaz.models import Region, Operator, Phone
 
-rossvyaz_url = 'https://rossvyaz.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii'
+rossvyaz_url = 'https://rossvyaz.gov.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii'
 csv_urls = [
-    'https://rossvyaz.ru/data/ABC-3xx.csv',
-    'https://rossvyaz.ru/data/ABC-4xx.csv',
-    'https://rossvyaz.ru/data/ABC-8xx.csv',
-    'https://rossvyaz.ru/data/DEF-9xx.csv',
+    'https://rossvyaz.gov.ru/data/ABC-3xx.csv',
+    'https://rossvyaz.gov.ru/data/ABC-4xx.csv',
+    'https://rossvyaz.gov.ru/data/ABC-8xx.csv',
+    'https://rossvyaz.gov.ru/data/DEF-9xx.csv',
 ]
 
 
@@ -107,7 +107,7 @@ def update_df_and_model(df, Model, column):
 
 
 def update_info(force=False):
-    print('Updating information from rossvyaz.ru.')
+    print('Updating information from rossvyaz.gov.ru.')
     try_num = 0
 
     update_date, records, data_is_updated = get_rossvyaz_data_info()
