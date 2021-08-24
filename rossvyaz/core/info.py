@@ -10,12 +10,12 @@ from constance import config
 
 from rossvyaz.models import Region, Operator, Phone
 
-rossvyaz_url = 'https://rossvyaz.gov.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii'
+rossvyaz_url = 'http://rossvyaz.gov.ru/deyatelnost/resurs-numeracii/vypiska-iz-reestra-sistemy-i-plana-numeracii'
 csv_urls = [
-    'https://rossvyaz.gov.ru/data/ABC-3xx.csv',
-    'https://rossvyaz.gov.ru/data/ABC-4xx.csv',
-    'https://rossvyaz.gov.ru/data/ABC-8xx.csv',
-    'https://rossvyaz.gov.ru/data/DEF-9xx.csv',
+    'http://rossvyaz.gov.ru/data/ABC-3xx.csv',
+    'http://rossvyaz.gov.ru/data/ABC-4xx.csv',
+    'http://rossvyaz.gov.ru/data/ABC-8xx.csv',
+    'http://rossvyaz.gov.ru/data/DEF-9xx.csv',
 ]
 
 
@@ -42,7 +42,7 @@ def write_string_io(df=None, columns=None, values=None):
 
 
 def get_rossvyaz_data_info():
-    rossvyaz_html = requests.get(rossvyaz_url).content
+    rossvyaz_html = requests.get(rossvyaz_url, verify=False).content
     soup = BeautifulSoup(rossvyaz_html, "html.parser")
     update_date_selection = soup.select('body > div.page.page--grey > div > div.container-fluid.wrapper > '
                                         'p:nth-child(2) > strong')
@@ -55,7 +55,7 @@ def get_rossvyaz_data_info():
 
 
 def fetch_csv(url):
-    response = requests.get(url)
+    response = requests.get(url, verify=False)
     if response.status_code != 200:
         raise ConnectionError(f'{url} not downloaded correctly: {response.status_code}')
     return response.content
